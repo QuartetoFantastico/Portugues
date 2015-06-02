@@ -32,13 +32,13 @@
 %\usetheme{Berlin}
 %\usetheme{Boadilla}
 %\usetheme{CambridgeUS}
-\usetheme{Copenhagen}
+%\usetheme{Copenhagen}
 %\usetheme{Darmstadt}
 %\usetheme{Dresden}
 %\usetheme{Frankfurt}
 %\usetheme{Goettingen}
 %\usetheme{Hannover}
-%*\usetheme{Ilmenau}
+\usetheme{Ilmenau}
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
 %\usetheme{Madrid}
@@ -95,16 +95,24 @@ Orientador: Quem? \\ % Your institution for the title page
 }
 \date{2015} % Date, can be changed to a custom date
 
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Visão Geral}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
 \begin{document}
 
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}
 
-\begin{frame}
-\frametitle{Roteiro} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
+%\begin{frame}
+%\frametitle{Visão Geral} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -127,104 +135,228 @@ Orientador: Quem? \\ % Your institution for the title page
 
 %------------------------------------------------
 
-
 %------------------------------------------------
 \section{Esteganografia}
-\subsection{Definição}
+%\subsection{Definição}
+
 \begin{frame}
-\frametitle{Esteganografia}
+\frametitle{Definição}
 \begin{itemize}
-\item Método de comunicação secreta
-\item Mensagem oculta em outra
+\item Método de comunicação secreta \newline
+\item Mensagem oculta em outra \newline
 \item Indetectável para terceiros
+
+
 \end{itemize}
 \end{frame}
 
 %------------------------------------------------
-\subsection{Origem}
+%\subsection{Origem}
 \begin{frame}
-\frametitle{Etimologia}
+\frametitle{Origem}
 \begin{itemize}
-\item \textit{steganos}: encoberto 
-\item \textit{graphia}: escrita
+\item \textit{steganos}: encoberto \newline
+\item \textit{graphia}: escrita\newline
 \item Johannes Trithemius 
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Utilização}
-\begin{itemize}
-\item Heródoto - história de Aristágoras (V a.C.)
-\item Campeonato de xadrez - Viktor Korchnoi e Anatoly Karpov (XX d.C.)
-\item Dhiren Barot - Die Hard: With a Vengeance (XXI d.C.)
-\end{itemize}
-\end{frame}
-
-
-
-
 %------------------------------------------------
-\subsection{Criptografia $\times$ Esteganografia}
+%\subsection{Criptografia $\times$ Esteganografia}
 \begin{frame}
-\frametitle{Esteganografia é criptografia?}
+\frametitle{Criptografia $\times$ Esteganografia}
 \begin{itemize}
-\item Semelhança: preocupação com a mensagem
+\item Semelhança: preocupação com a mensagem \newline
 \item Diferença: canal de comunicação
 \end{itemize}
 \end{frame}
 
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{Utilização}
+\begin{itemize}
+\item Heródoto - história de Aristágoras (V a.C.)\newline
+\item Campeonato de xadrez - Viktor Korchnoi e Anatoly Karpov (XX d.C.)\newline
+\item Dhiren Barot - Die Hard: With a Vengeance (XXI d.C.)\newline
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+%------------------------------------------------
 \section{DICOM}
 %------------------------------------------------
-\subsection{Formato}
+%\subsection{Formato}
 \begin{frame}
 \frametitle{Descrição do DICOM}
+
+\begin{itemize}
+\item \textit{Digital Imaging Communications in Medicine}\newline
+\item Desenvolvido por ACR e NEMA\newline
+\item Cabeçalho com informações e matriz da imagem\newline
+\item Inserir table
+\end{itemize}
 
 \end{frame}
 
 
 %------------------------------------------------
-\subsection{Falhas}
+%\subsection{Falhas}
 \begin{frame}
-\frametitle{Problemas do DICOM}
+\frametitle{Falhas do DICOM}
+
+\begin{itemize}
+\item Não protege os dados\newline
+\item Passível de modificação\newline
+\item Não garantia de autenticidade
+\end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
 \section{Técnicas de Esteganografia}
 %------------------------------------------------
-\subsection{LSB}
+%\subsection{LSB}
 \begin{frame}
-\frametitle{Low Significative Bits}
+\frametitle{Bits Menos Significativos -- BMS}
+
+\begin{itemize}
+\item Matriz de tons cinza\newline
+\item Alteração pouco perceptível\newline
+\item Modificação do bit menos significativo
+
+\end{itemize}
 
 \end{frame}
 %------------------------------------------------
-\subsection{DBAM}
 \begin{frame}
-\frametitle{Divisão em Blocos e Alteração da Média}
+\frametitle{Análise do BMS}
 
+\begin{itemize}
+\item Transformações geométricas\newline
+\item Filtros\newline
+\item Esquemas de compressão\newline
+\item Fácil recuperação dos dados
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------
+%\subsection{DBAM}
+\begin{frame}
+\frametitle{Divisão em Blocos e Alteração da Média -- DBAM}
+
+\begin{itemize}
+\item Divide a imagem em blocos \newline
+\item Calcula a melhor posição para as alterações\newline
+\item Busca a mínima degradação 
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Análise do DBAM}
+
+\begin{itemize}
+\item Alteração visível \newline
+\item Pré-processamento da imagem \newline
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%\subsection{MAMM}
+\begin{frame}
+\frametitle{Método de Alteração da Média Modificado -- MAMM}
+
+\begin{itemize}
+\item Aperfeiçoamento do método anterior \newline
+\item Embaralhamento de \textit{pixels} (\textit{shuffling}) \newline
+\item Equilíbrio dos tons
+\end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
-\subsection{MAMM}
 \begin{frame}
-\frametitle{Método de Alteração da Média Modificado}
+\frametitle{Análise do MAMM}
+
+\begin{itemize}
+\item Combate os pontos fracos dos outros métodos \newline
+\item Modificação pouco perceptível \newline
+\item Eficácia baseada em amostragem
+\end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
+
 \section{Resultados}
 \begin{frame}
-\frametitle{Comparação das imagens}
+\frametitle{Esteganografia com BMS}
+\begin{figure}
+\includegraphics[scale=.2]{BMS.png} 
+\caption{À esquerda, imagem original. À direita, após BMS}
+\end{figure}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Esteganografia com BMS}
+\begin{figure}
+\includegraphics[scale=.2]{BMSdiff.png} 
+\caption{Diferença entre as imagens com BMS}
+\end{figure}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Esteganografia com DBAM}
+\begin{figure}
+\includegraphics[scale=.2]{DBAM.png} 
+\caption{À esquerda, imagem original. À direita, após DBAM}
+\end{figure}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Esteganografia com DBAM}
+\begin{figure}
+\includegraphics[scale=.2]{DBAMdiff.png} 
+\caption{Diferença entre as imagens com DBAM}
+\end{figure}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Esteganografia com MAMM}
+\begin{figure}
+\includegraphics[scale=.2]{MAMM.png} 
+\caption{À esquerda, imagem original. À direita, após MAMM}
+\end{figure}
+\end{frame}
 
+%------------------------------------------------
+\begin{frame}
+\frametitle{Esteganografia com MAMM}
+\begin{figure}
+\includegraphics[scale=.2]{MAMMdiff.png} 
+\caption{Diferença entre as imagens com MAMM}
+\end{figure}
 \end{frame}
 
 %------------------------------------------------
 \section{Conclusões}
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
 \frametitle{Conclusões}
+\begin{itemize}
 
+\item O DICOM é difundido porém é falho no sigilo dos dados.\newline
+
+\item Dentre as técnicas apresentadas, o Método de Alteração das Médias Modificado mostrou-se o mais eficaz.\newline
+
+\item A integração do MAMM ao padrão DICOM propiciaria um grande avanço para a segurança da informação.\newline
+
+\end{itemize}
 \end{frame}
 
 \end{document}
