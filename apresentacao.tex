@@ -76,7 +76,7 @@
 
 %\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
-
+\usepackage{caption}
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 
@@ -86,19 +86,19 @@
 
 \title{Esteganografia em Imagens Médicas} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Quem é o autor} % Your name
+\author{} % Your name
 \institute[USP] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-Orientador: Quem? \\ % Your institution for the title page
+ \\ % Your institution for the title page
 \medskip
 \textit{} % Your email address
 }
-\date{2015} % Date, can be changed to a custom date
+\date{} % Date, can be changed to a custom date
 
 \AtBeginSection[]
 {
 \begin{frame}
-\frametitle{Visão Geral}
+\frametitle{}
 \tableofcontents[currentsection]
 \end{frame}
 }
@@ -108,7 +108,23 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}
+\begin{frame}
+Autor: Rafael de Assunção Sampaio
 
+Orientador: Marcel Jackowski
+
+\begin{flushright}
+ Eduardo Bier
+ 
+ Fernanda Camargo
+
+ Florence Alyssa
+
+ Marcello Oliveira
+
+ Shayenne Moura
+ \end{flushright} % Print the title page as the first slide
+\end{frame}
 %\begin{frame}
 %\frametitle{Visão Geral} % Table of contents slide, comment this block out to remove it
 %\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
@@ -123,18 +139,55 @@ Orientador: Quem? \\ % Your institution for the title page
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Introdução}
+\frametitle{Motivação}
 \begin{itemize}
 \item Confiabilidade dos exames médicos \newline
 \item Exposição de dados confidenciais \newline
-\item Risco de fraude 
-
+\item Risco de fraude \newline
+\item Garantia de autenticidade
 \end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
 
+%------------------------------------------------
+
+\section{DICOM}
+%------------------------------------------------
+%\subsection{Formato}
+\begin{frame}
+\frametitle{Descrição do DICOM}
+
+\begin{itemize}
+\item \textit{Digital Imaging Communications in Medicine}\newline
+\item ACR e NEMA\newline
+\item Cabeçalho com informações e matriz da imagem\newline
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Algumas \textit{tags} DICOM}
+\begin{figure}  
+\includegraphics[scale=.3]{table.png} 
+
+
+\centering{Fonte: Rafael Sampaio, 2012}
+\end{figure}
+\end{frame}
+%------------------------------------------------
+%\subsection{Falhas}
+\begin{frame}
+\frametitle{Falhas do DICOM}
+
+\begin{itemize}
+\item Falta de proteção aos dados\newline
+\item Passível de modificação\newline
+\item Inautenticidade das informações
+\end{itemize}
+
+\end{frame}
 %------------------------------------------------
 \section{Esteganografia}
 %\subsection{Definição}
@@ -144,7 +197,7 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{itemize}
 \item Método de comunicação secreta \newline
 \item Mensagem oculta em outra \newline
-\item Indetectável para terceiros
+\item Transmissão indetectável para terceiros
 
 
 \end{itemize}
@@ -155,8 +208,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{frame}
 \frametitle{Origem}
 \begin{itemize}
-\item \textit{steganos}: encoberto \newline
-\item \textit{graphia}: escrita\newline
+\item \textit{Steganos}: encoberto \newline
+\item \textit{Graphia}: escrita\newline
 \item Johannes Trithemius 
 \end{itemize}
 \end{frame}
@@ -174,52 +227,16 @@ Orientador: Quem? \\ % Your institution for the title page
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Utilização}
+\frametitle{Exemplos de Utilização}
 \begin{itemize}
 \item Heródoto - história de Aristágoras (V a.C.)\newline
-\item Campeonato de xadrez - Viktor Korchnoi e Anatoly Karpov (XX d.C.)\newline
+\item Viktor Korchnoi e Anatoly Karpov - Campeonato de xadrez (XX d.C.)\newline
 \item Dhiren Barot - Die Hard: With a Vengeance (XXI d.C.)\newline
 \end{itemize}
 \end{frame}
 
 
-
-
-
-
 %------------------------------------------------
-\section{DICOM}
-%------------------------------------------------
-%\subsection{Formato}
-\begin{frame}
-\frametitle{Descrição do DICOM}
-
-\begin{itemize}
-\item \textit{Digital Imaging Communications in Medicine}\newline
-\item Desenvolvido por ACR e NEMA\newline
-\item Cabeçalho com informações e matriz da imagem\newline
-\begin{figure}
-\includegraphics[scale=.3]{table.png} 
-\caption{Algumas \textit{tags} do padrão DICOM}
-\end{figure}
-\end{itemize}
-
-\end{frame}
-
-
-%------------------------------------------------
-%\subsection{Falhas}
-\begin{frame}
-\frametitle{Falhas do DICOM}
-
-\begin{itemize}
-\item Não protege os dados\newline
-\item Passível de modificação\newline
-\item Não garantia de autenticidade
-\end{itemize}
-
-\end{frame}
-
 %------------------------------------------------
 \section{Técnicas de Esteganografia}
 %------------------------------------------------
@@ -228,7 +245,7 @@ Orientador: Quem? \\ % Your institution for the title page
 \frametitle{Bits Menos Significativos -- BMS}
 
 \begin{itemize}
-\item Matriz de tons cinza\newline
+\item Utilização de matriz de tons cinza\newline
 \item Alteração pouco perceptível\newline
 \item Modificação do bit menos significativo
 
@@ -253,9 +270,9 @@ Orientador: Quem? \\ % Your institution for the title page
 \frametitle{Divisão em Blocos e Alteração da Média -- DBAM}
 
 \begin{itemize}
-\item Divide a imagem em blocos \newline
-\item Calcula a melhor posição para as alterações\newline
-\item Busca a mínima degradação 
+\item Divisão a imagem em blocos \newline
+\item Cálculo a melhor posição para as alterações\newline
+\item Busca da mínima degradação 
 \end{itemize}
 \end{frame}
 
@@ -288,7 +305,7 @@ Orientador: Quem? \\ % Your institution for the title page
 \frametitle{Análise do MAMM}
 
 \begin{itemize}
-\item Combate os pontos fracos dos outros métodos \newline
+\item Combate dos pontos fracos dos outros métodos \newline
 \item Modificação pouco perceptível \newline
 \item Eficácia baseada em amostragem
 \end{itemize}
@@ -303,6 +320,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{figure}
 \includegraphics[scale=.2]{BMS.png} 
 \caption{À esquerda, imagem original. À direita, após BMS}
+
+\centering{Fonte: Rafael Sampaio, 2012}
 \end{figure}
 \end{frame}
 %------------------------------------------------
@@ -311,6 +330,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{figure}
 \includegraphics[scale=.2]{BMSdiff.png} 
 \caption{Diferença entre as imagens com BMS}
+
+\centering{Fonte: Rafael Sampaio, 2012}
 \end{figure}
 \end{frame}
 %------------------------------------------------
@@ -319,6 +340,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{figure}
 \includegraphics[scale=.2]{DBAM.png} 
 \caption{À esquerda, imagem original. À direita, após DBAM}
+
+\centering{Fonte: Rafael Sampaio, 2012}
 \end{figure}
 \end{frame}
 %------------------------------------------------
@@ -327,6 +350,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{figure}
 \includegraphics[scale=.2]{DBAMdiff.png} 
 \caption{Diferença entre as imagens com DBAM}
+
+\centering{Fonte: Rafael Sampaio, 2012}
 \end{figure}
 \end{frame}
 %------------------------------------------------
@@ -335,6 +360,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{figure}
 \includegraphics[scale=.2]{MAMM.png} 
 \caption{À esquerda, imagem original. À direita, após MAMM}
+
+\centering{Fonte: Rafael Sampaio, 2012}
 \end{figure}
 \end{frame}
 
@@ -344,6 +371,8 @@ Orientador: Quem? \\ % Your institution for the title page
 \begin{figure}
 \includegraphics[scale=.2]{MAMMdiff.png} 
 \caption{Diferença entre as imagens com MAMM}
+
+\centering{Fonte: Rafael Sampaio, 2012}
 \end{figure}
 \end{frame}
 
@@ -353,11 +382,11 @@ Orientador: Quem? \\ % Your institution for the title page
 \frametitle{Conclusões}
 \begin{itemize}
 
-\item O DICOM é difundido porém é falho no sigilo dos dados.\newline
+\item Utilização do DICOM e o sigilo dos dados\newline
 
-\item Dentre as técnicas apresentadas, o Método de Alteração das Médias Modificado mostrou-se o mais eficaz.\newline
+\item Eficácia do Método de Alteração das Médias Modificado \newline
 
-\item A integração do MAMM ao padrão DICOM propiciaria um grande avanço para a segurança da informação.\newline
+\item Integração MAMM e DICOM \newline
 
 \end{itemize}
 \end{frame}
